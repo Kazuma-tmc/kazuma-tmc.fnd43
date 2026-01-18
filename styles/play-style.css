@@ -1,0 +1,59 @@
+#playerArea {
+  margin: auto;
+  width: 400px;
+  height: 200px;
+  background-color: green;
+  text-align: center;
+}
+
+#cpuArea {
+  margin: auto;
+  width: 400px;
+  height: 200px;
+  background-color: blue;
+  text-align: center;
+}
+
+#LogArea {
+  margin: auto;
+  width: 400px;
+  height: 100px;
+  background-color: pink;
+  text-align: center;
+}
+
+.rspButton {
+  margin: auto;
+  width: 70px;
+  height: 50px;
+  background-color: lightblue;
+  text-align: center;
+  border: solid black;
+}
+
+#hand {
+  margin: auto;
+  width: 70px;
+  height: 50px;
+  background-color: lightgreen;
+  text-align: center;
+  border: solid black;
+}
+
+#cpuButton {
+  margin: auto;
+  width: 70px;
+  height: 50px;
+  background-color: lightgreen;
+  text-align: center;
+  border: solid black;
+}
+
+#video {
+  margin: auto;
+  width: 200px;
+  height: 150px;
+  background-color: lightgreen;
+  text-align: center;
+  border: solid black;
+}
