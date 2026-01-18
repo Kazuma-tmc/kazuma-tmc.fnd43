@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>じゃんけんアプリ-マウスモード</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/play-style.css">
+  <script type="text/javascript" src="./modules/lodash.min.js"></script>
+</head>
+
+<body>
+  <div id="modeMessage">マウスモード</div>
+  <div id="config"></div>
+  <div id="playerArea">
+    <button class="rspButton" id="rockButton" value="rock">グー</button>
+    <button class="rspButton" id="scissorsButton" value="scissors">チョキ</button>
+    <button class="rspButton" id="paperButton" value="paper">パー</button>
+    <div id="hand">---</div>
+  </div>
+  <div id="LogArea">
+    <div id="timer">3</div>
+    <div id="message">スペースキーを押したらスタート</div>
+    <div id="judge"></div>
+  </div>
+  <div id="cpuArea">
+    <button class="cpuButton" id="cpuButton">---</button>
+  </div>
+  <button onclick="location.href='./index.html'">戻る</button>
+  <button onclick="location.href=window.location.href">リロード</button>
+  <script type="text/javascript" src="./modules/getConfig.js"></script>
+  <script type="text/javascript" src="./modules/script.js"></script>
+</body>
+
+</html>

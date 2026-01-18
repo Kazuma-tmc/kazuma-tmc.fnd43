@@ -2,20 +2,54 @@
 <html lang="ja">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <link rel="stylesheet" href="gators.css">
-  <!-- <script src="gators.js"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>じゃんけんアプリ</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/index-style.css">
+  <script type="text/javascript" src="./modules/lodash.min.js"></script>
 </head>
 
 <body>
-  <div id="greenBox">
-    <input type="text" id="gatorNum">
-    <button id="releaseGators">ワニ放出！</button>
+  <h1>じゃんけんあぷり</h1>
+  <div>
+    じゃんけんアプリです。<br>
+    カメラを用いるモードとマウスで選択するモードの2つのモードがあります。<br>
+    難易度は「初級」「中級」「上級」の3段階<br>
+    設定した回数連続でじゃんけん勝利したらゲームクリアです。<br>
   </div>
-  <div id="blueBox"></div>
-  <script src="gators.js"></script>
+  <div>モード選択<br>
+    <input type="radio" name="modeSelector" value="mouse_mode" id="mouseMode" checked>
+    <label for="mouseMode">マウスモード</label>
+    <input type="radio" name="modeSelector" value="camera_mode" id="cameraMode">
+    <label for="cameraMode">カメラモード</label>
+    <!-- <button>カメラモード</button> -->
+    <!-- <button>マウスモード</button> -->
+  </div>
+  <div>難易度<br>
+    <input type="radio" name="levelSelector" value="easy" id="easyLevel" checked>
+    <label for="easyLevel">初級</label>
+    <input type="radio" name="levelSelector" value="normal" id="normalLevel">
+    <label for="normalLevel">中級</label>
+    <input type="radio" name="levelSelector" value="hard" id="hardLevel">
+    <label for="hardLevel">上級</label>
+    <!-- <button>初級</button>
+    <button>中級</button>
+    <button>上級</button> -->
+  </div>
+  <div>クリアじゃんけん回数<br>
+    <select name="numOfTimes" id="numOfTimes" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3" selected>3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  <div>
+    <button id="startButton">スタート</button>
+  </div>
+  <script type="text/javascript" src="./modules/setConfig.js"></script>
 </body>
 
 </html>

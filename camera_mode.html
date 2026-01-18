@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>じゃんけんアプリ-カメラモード</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/play-style.css">
+  <script type="text/javascript" src="./modules/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> -->
+  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> -->
+</head>
+
+<body>
+  <div id="modeMessage">カメラモード</div>
+  <div id="config"></div>
+  <div id="configCamera">
+    <button onclick="camraStart()" id="startCamera">webカメラを再開</button>
+    <button onclick="stopCamera()" id="stopCamera">webカメラを停止</button>
+  </div>
+  <div id="playerArea">
+    <video id="video" autoplay>Video stream not available.</video>
+    <div id="hand">---</div>
+  </div>
+  <div id="LogArea">
+    <div id="timer">3</div>
+    <div id="message">スペースキーを押したらスタート</div>
+    <div id="judge"></div>
+  </div>
+  <div id="cpuArea">
+    <button class="cpuButton" id="cpuButton">---</button>
+  </div>
+  <button onclick="location.href='./index.html'">戻る</button>
+  <button onclick="location.href=window.location.href">リロード</button>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script> -->
+  <script type="text/javascript" src="./modules/getConfig.js"></script>
+  <script type="text/javascript" src="./modules/script.js"></script>
+</body>
+
+</html>
