@@ -12,41 +12,40 @@
 
 <body>
   <h1>じゃんけんあぷり</h1>
-  <div>
-    じゃんけんアプリです。<br>
-    カメラを用いるモードとマウスで選択するモードの2つのモードがあります。<br>
+  <hr>
+  <div id="explanation">
+    カメラを用いるモードとマウスで選択するモードの2つのモードがあります<br>
     難易度は「初級」「中級」「上級」の3段階<br>
-    設定した回数連続でじゃんけん勝利したらゲームクリアです。<br>
+    設定した回数連続で勝利したらゲームクリア！！<br>
   </div>
-  <div>モード選択<br>
-    <input type="radio" name="modeSelector" value="mouse_mode" id="mouseMode" checked>
-    <label for="mouseMode">マウスモード</label>
-    <input type="radio" name="modeSelector" value="camera_mode" id="cameraMode">
-    <label for="cameraMode">カメラモード</label>
-    <!-- <button>カメラモード</button> -->
-    <!-- <button>マウスモード</button> -->
+  <hr>
+  <div id="config">
+    <div id="mode"><p>モード選択</p>
+      <input type="radio" name="modeSelector" value="mouse_mode" id="mouseMode" checked>
+      <label for="mouseMode">マウスモード</label>
+      <input type="radio" name="modeSelector" value="camera_mode" id="cameraMode">
+      <label for="cameraMode">カメラモード</label>
+    </div>
+    <div id="level"><p>難易度</p>
+      <input type="radio" name="levelSelector" value="easy" id="easyLevel" checked>
+      <label for="easyLevel">初級</label>
+      <input type="radio" name="levelSelector" value="normal" id="normalLevel">
+      <label for="normalLevel">中級</label>
+      <input type="radio" name="levelSelector" value="hard" id="hardLevel">
+      <label for="hardLevel">上級</label>
+    </div>
+    <div id="times"><p>クリアじゃんけん回数</p>
+      <select name="numOfTimes" id="numOfTimes" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
   </div>
-  <div>難易度<br>
-    <input type="radio" name="levelSelector" value="easy" id="easyLevel" checked>
-    <label for="easyLevel">初級</label>
-    <input type="radio" name="levelSelector" value="normal" id="normalLevel">
-    <label for="normalLevel">中級</label>
-    <input type="radio" name="levelSelector" value="hard" id="hardLevel">
-    <label for="hardLevel">上級</label>
-    <!-- <button>初級</button>
-    <button>中級</button>
-    <button>上級</button> -->
-  </div>
-  <div>クリアじゃんけん回数<br>
-    <select name="numOfTimes" id="numOfTimes" required>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3" selected>3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-  </div>
-  <div>
+  <hr>
+  <div id="start">
     <button id="startButton">スタート</button>
   </div>
   <script type="text/javascript" src="./modules/setConfig.js"></script>

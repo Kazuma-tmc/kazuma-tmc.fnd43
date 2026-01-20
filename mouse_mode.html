@@ -11,8 +11,9 @@
 </head>
 
 <body>
-  <div id="modeMessage">マウスモード</div>
+  <h1 id="modeMessage">マウスモード</h1>
   <div id="config"></div>
+  <hr>
   <div id="playerArea">
     <button class="rspButton" id="rockButton" value="rock">グー</button>
     <button class="rspButton" id="scissorsButton" value="scissors">チョキ</button>
@@ -27,8 +28,11 @@
   <div id="cpuArea">
     <button class="cpuButton" id="cpuButton">---</button>
   </div>
-  <button onclick="location.href='./index.html'">戻る</button>
-  <button onclick="location.href=window.location.href">リロード</button>
+  <hr>
+  <div id="footer">
+    <button onclick="location.href='./index.html'">戻る</button>
+    <button onclick="location.href=window.location.href">リロード</button>
+  </div>
   <script type="text/javascript" src="./modules/getConfig.js"></script>
   <script type="text/javascript" src="./modules/script.js"></script>
 </body>

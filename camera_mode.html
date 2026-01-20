@@ -17,12 +17,13 @@
 </head>
 
 <body>
-  <div id="modeMessage">カメラモード</div>
+  <h1 id="modeMessage">カメラモード</h1>
   <div id="config"></div>
   <div id="configCamera">
-    <button onclick="camraStart()" id="startCamera">webカメラを再開</button>
+    <button onclick="startCamera()" id="startCamera">webカメラを再開</button>
     <button onclick="stopCamera()" id="stopCamera">webカメラを停止</button>
   </div>
+  <hr>
   <div id="playerArea">
     <video id="video" autoplay>Video stream not available.</video>
     <div id="hand">---</div>
@@ -35,10 +36,11 @@
   <div id="cpuArea">
     <button class="cpuButton" id="cpuButton">---</button>
   </div>
-  <button onclick="location.href='./index.html'">戻る</button>
-  <button onclick="location.href=window.location.href">リロード</button>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script> -->
+  <hr>
+  <div id="footer">
+    <button onclick="location.href='./index.html'">戻る</button>
+    <button onclick="location.href=window.location.href">リロード</button>
+  </div>
   <script type="text/javascript" src="./modules/getConfig.js"></script>
   <script type="text/javascript" src="./modules/script.js"></script>
 </body>
