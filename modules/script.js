@@ -16,6 +16,7 @@ function setParams() {
   params.message = document.getElementById("message");
   params.judge = document.getElementById("judge");
   params.wins = 0; //勝利数
+  params.hands = { rock: "グー", scissors: "チョキ", paper: "パー" };
   return function () {
     return params;
   }
@@ -50,6 +51,13 @@ function mouseSetHand() {
   }
 }
 // じゃんけんの選択時（カメラモード）
+function cameraActive(image) {
+  if (image.srcObject !== null && config.isStart) {
+    cameraSetHand(image);
+  } else if (!config.isStart) {
+    console.log("ゲームがスタートしていません");
+  }
+}
 async function cameraSetHand(image) {
   const model = handPoseDetection.SupportedModels.MediaPipeHands;
   const detectorConfig = {
@@ -59,19 +67,38 @@ async function cameraSetHand(image) {
   }
   const detector = await handPoseDetection.createDetector(model, detectorConfig);
   const hands = await detector.estimateHands(image);
-  // const reshands = hands.then(result => {
-  //   let reshand;
-  //   if (result[0] !== undefined) {
-  //     reshand = result[0].keypoints;
-  //   }
-  // })
-  // if (reshands === undefined) {
-  //   console.log("カメラに手が写っていません");
-  // }
-  return hands;
+  // console.log(config.isStart);
+  if (hands.length !== 0) {
+    config.playerHand = rspDetector(hands[0].keypoints);
+    document.getElementById("hand").textContent = config.hands[config.playerHand];
+    document.getElementById("video").style.border = "dashed green";
+    console.log(config.playerHand);
+  } else {
+    document.getElementById("video").style.border = "";
+    console.log("カメラに手が写っていません");
+  }
 }
+
+// キーポイントから判定
+function rspDetector(keypoints) {
+  const ind_fing = keypoints[5].y > keypoints[8].y;
+  const pin_fing = keypoints[17].y > keypoints[20].y;
+  // console.log("ind_fing:", ind_fing);
+  // console.log("pin_fing:", pin_fing);
+  let selectHand = undefined;
+  if (ind_fing && pin_fing) {
+    selectHand = "paper";
+  } else if (ind_fing && !pin_fing) {
+    selectHand = "scissors";
+  } else {
+    selectHand = "rock";
+  }
+  return selectHand;
+}
+
+
 // カメラの開始と停止
-async function camraStart() {
+async function startCamera() {
   try {
     const video = document.getElementById("video");
     const stream = await navigator.mediaDevices.getUserMedia({
@@ -91,6 +118,7 @@ function stopCamera() {
     track.stop();
   });
   document.getElementById("video").srcObject = null;
+  document.getElementById("hand").textContent = "---";
 }
 
 //CPUの選択を決める
@@ -203,7 +231,7 @@ function gameEnd() {
   judgement(config.playerHand, config.cpuHand);
   config.intervalId = Number(config.initialTimer);
   config.playerHand = undefined;
-  if (config.isWin === 1) {
+  if (config.isWin === 1) { //勝ちの処理
     config.wins += 1;
     console.log(`勝利数：${config.wins}/${config.times}`);
     if (config.times > config.wins) {
@@ -212,11 +240,9 @@ function gameEnd() {
     } else {
       config.judge.textContent = `ゲームクリア`;
     }
-  } else if (config.isWin === 0) {
-    // config.timer.textContent = config.intervalId;
-    // _.delay(gameStart, 1000);
+  } else if (config.isWin === 0) { //あいこの処理
     gameStart();
-  } else {
+  } else { //負けの処理
     config.judge.textContent = `ゲームオーバー`;
   }
 }
@@ -241,8 +267,9 @@ if (config.mode === "mouse_mode") {
   document.getElementById("paperButton").addEventListener("click", mouseSetHand);
 }
 
+//カメラモードの選択時の動き
+let intId;
 if (config.mode === "camera_mode") {
-  camraStart();
+  startCamera();
+  setInterval(cameraActive, 500, document.getElementById("video"));
 }
-// camraStart();
-// cameraSetHand(document.getElementById("video"))
