@@ -26,7 +26,7 @@ function setParams() {
 function mouseSetHand() {
   // ボタンのstyle初期設定（色のみ）
   for (const element of document.getElementsByClassName("rspButton")) {
-    element.style.backgroundColor = "lightblue";
+    element.style.backgroundColor = "#EFEFEF";
     element.style.border = "solid blue";
   }
   const initialStyle = document.getElementsByClassName("rspButton")[0].style; //初期色保存
@@ -39,9 +39,9 @@ function mouseSetHand() {
     config.playerHand = this.value;
     for (const element of document.getElementsByClassName("rspButton")) {
       if (this.id === element.id) {
-        element.style.backgroundColor = "lightgreen";
-        element.style.border = "dashed red";
-        document.getElementById("hand").textContent = element.textContent;
+        element.style.backgroundColor = "#f6ad27e7";
+        element.style.border = "dashed #f09f08fe";
+        document.getElementById("hand").textContent = config.hands[element.value];
       } else {
         // console.log(`isc:${initialBackgroundColor}`);
         element.style.backgroundColor = initialBackgroundColor;
@@ -199,7 +199,7 @@ function reduceTime() {
   if (config.intervalId <= 0) {
     clearInterval(config.timeId);
     config.timeId = null;
-    config.message.textContent = `あなたは、${config.playerHand}を選択`;
+    config.message.textContent = `あなたは、${config.hands[config.playerHand]}を選択`;
     gameEnd();
   }
 }
@@ -217,10 +217,10 @@ function judgement(playerHand, cpuHand) {
     (playerHand === "rock" && cpuHand === "scissors") ||
     (playerHand === "scissors" && cpuHand === "paper") ||
     (playerHand === "paper" && cpuHand === "rock")) {
-    config.judge.textContent = `CPU:${cpuHand} あなたの勝ちです`;
+    config.judge.textContent = `CPU:${config.hands[cpuHand]} あなたの勝ちです`;
     config.isWin = 1;
   } else {
-    config.judge.textContent = `CPU:${cpuHand} あなたの負けです`;
+    config.judge.textContent = `CPU:${config.hands[cpuHand]} あなたの負けです`;
     config.isWin = -1;
   }
 }
