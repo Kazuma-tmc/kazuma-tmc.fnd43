@@ -71,7 +71,7 @@ async function cameraSetHand(image) {
   if (hands.length !== 0) {
     config.playerHand = rspDetector(hands[0].keypoints);
     document.getElementById("hand").textContent = config.hands[config.playerHand];
-    document.getElementById("video").style.border = "dashed green";
+    document.getElementById("video").style.border = "dashed #f9508b";
     console.log(config.playerHand);
   } else {
     document.getElementById("video").style.border = "";
@@ -200,6 +200,9 @@ function reduceTime() {
     clearInterval(config.timeId);
     config.timeId = null;
     config.message.textContent = `あなたは、${config.hands[config.playerHand]}を選択`;
+    if (config.playerHand === undefined) {
+      config.message.textContent = "選ばなかったのであなたの負けです";
+    }
     gameEnd();
   }
 }
@@ -209,7 +212,6 @@ function judgement(playerHand, cpuHand) {
   console.log(`cpuHand  :${cpuHand}`);
   config.isWin = 0;
   if (playerHand === undefined) {
-    config.judge.textContent = "選ばなかったのであなたの負けです";
     config.isWin = -1;
   } else if (playerHand === cpuHand) {
     config.judge.textContent = "あいこ！";
